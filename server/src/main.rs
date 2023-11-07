@@ -1,11 +1,12 @@
 use axum::extract::Query;
 use axum::routing::get;
-use axum::{Json, Router, ServiceExt};
+use axum::{Json, Router};
 use clap::Parser;
 use clap_num::number_range;
 use serde::{Deserialize, Serialize};
-use serde_json::Value;
+
 use std::collections::HashMap;
+use tower_http::cors::CorsLayer;
 
 fn port_validator(i: &str) -> Result<i32, String> {
     number_range(i, 1, 65535)
@@ -32,7 +33,8 @@ async fn main() {
 
     let app = Router::new()
         .route("/product", get(get_products))
-        .route("/quadratic", get(quadratic));
+        .route("/quadratic", get(quadratic))
+        .layer(CorsLayer::permissive());
 
     if let Some(i) = cli.port {
         port = i;
@@ -48,7 +50,7 @@ async fn main() {
 async fn get_products() -> Json<Vec<Product>> {
     let mut products: Vec<Product> = vec![];
 
-    for i in 2..=11 {
+    for i in 1..=11 {
         let product = Product {
             id: i,
             name: format!("Product {}", i),

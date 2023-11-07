@@ -13,3 +13,4 @@ serde = {version = "1.0.192", features = ["derive"]}
 serde_json = "1.0.108"
 clap = {version = "4.4.7", features = ["derive"]}
 clap-num = "1.0.2"
+tower-http = {version = "0.4.4", features = ["full"]}

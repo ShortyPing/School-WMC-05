@@ -1,0 +1,7 @@
+<div class="c">
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <input [formControl]="form.controls.number" type="number" class="form-control" placeholder="Enter a number">
+    <button class="btn btn-info" type="submit">Calculate</button>
+    <p *ngIf="calculatedValue">Calculated value: {{calculatedValue}}</p>
+  </form>
+</div>

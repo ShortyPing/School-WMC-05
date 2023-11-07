@@ -1,0 +1,20 @@
+<div class="c">
+  <table class="table table-responsive">
+    <thead>
+    <tr>
+      <th>#</th>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Price</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let product of products">
+      <th>{{product.id}}</th>
+      <th>{{product.name}}</th>
+      <th>{{product.description}}</th>
+      <th>{{product.price}}</th>
+    </tr>
+    </tbody>
+  </table>
+</div>
